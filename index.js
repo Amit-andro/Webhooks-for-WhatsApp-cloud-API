@@ -6,13 +6,12 @@ require('dotenv').config();
 const app=express().use(body_parser.json());
 
 const token=process.env.TOKEN;
-const mytoken=process.env.MYTOKEN;//prasath_token
+const mytoken=process.env.MYTOKEN;
 
 app.listen(process.env.PORT,()=>{
     console.log("webhook is listening");
 });
 
-//to verify the callback url from dashboard side - cloud api side
 app.get("/webhook",(req,res)=>{
    let mode=req.query["hub.mode"];
    let challange=req.query["hub.challenge"];
@@ -31,7 +30,7 @@ app.get("/webhook",(req,res)=>{
 
 });
 
-app.post("/webhook",(req,res)=>{ //i want some 
+app.post("/webhook",(req,res)=>{
 
     let body_param=req.body;
 
@@ -59,7 +58,7 @@ app.post("/webhook",(req,res)=>{ //i want some
                        messaging_product:"whatsapp",
                        to:from,
                        text:{
-                           body:"Hi.. I'm Prasath, your message is "+msg_body
+                           body:"Hi.. I'm Amit, your message is "+msg_body
                        }
                    },
                    headers:{
